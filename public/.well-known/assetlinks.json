@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "com.herokuapp.mister_hits.twa",
+                     "sha256_cert_fingerprints": ["E9:B7:5E:33:4B:5A:D8:7D:AF:1A:2E:77:5B:4D:4A:98:ED:32:8B:AE:71:57:F1:F7:C7:E0:7E:AE:D3:12:73:C5"] }
+      }
+]
