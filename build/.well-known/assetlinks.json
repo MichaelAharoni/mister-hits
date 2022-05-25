@@ -4,9 +4,8 @@
     "target": {
       "namespace": "android_app",
       "package_name": "mister.hits",
-      "sha256_cert_fingerprints": [
-        "6C:59:75:79:95:1F:13:2D:9B:44:85:5F:33:96:46:D3:F9:9B:E8:1E:C0:94:58:B2:C8:3F:A1:E7:E7:B7:23:92"
-      ]
+      "sha256_cert_fingerprints":
+        ["6C:59:75:79:95:1F:13:2D:9B:44:85:5F:33:96:46:D3:F9:9B:E8:1E:C0:94:58:B2:C8:3F:A1:E7:E7:B7:23:92"]
     }
   }
 ]
