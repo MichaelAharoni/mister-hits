@@ -30,17 +30,18 @@ app.use(session)
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, 'public')))
 } else {
-    const corsOptions = {
-        origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000'],
-        credentials: true
-    }
-    app.use(bodyParser.json())
-    app.use(cors(corsOptions))
+    app.use(express.static(path.resolve(__dirname, 'public')))
+    // const corsOptions = {
+    //     origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000'],
+    //     credentials: true
+    // }
+    // app.use(bodyParser.json())
+    // app.use(cors(corsOptions))
 }
 
 app.post('/subscribe', (req, res) => {
     const subsciption = req.body
-    res.status(201).json({})
+    res.status(201).json({title: 'Push Test'})
     const payload = JSON.stringify({ title: 'Push Test' })
     webpush.sendNotification(subsciption, payload).catch(err => console.error(err))
 })
