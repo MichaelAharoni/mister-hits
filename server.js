@@ -8,7 +8,7 @@ const expressSession = require('express-session')
 const publicVapidKey = 'BBAj18v4Nr8XVy_N0qdQSE1Fb_wdkK2lej3Xbej1cwrhuM64jlhODmZ3XanYoajXzASLKlH1nzNdVMjtpanXT60'
 const privateVapidKey = '5DO8vmEH6fa8erjDTCiTU2Y3BkzhgdSbhfdozOqnjfM'
 
-webpush.setVapidDetails('mailto:test@test.com', publicVapidKey, privateVapidKey)
+webpush.setVapidDetails('mailto:michaelaharoni000@gmail.com', publicVapidKey, privateVapidKey)
 
 
 const app = express()
@@ -31,18 +31,21 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, 'public')))
 } else {
     app.use(express.static(path.resolve(__dirname, 'public')))
-    // const corsOptions = {
-    //     origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000'],
-    //     credentials: true
-    // }
-    // app.use(bodyParser.json())
-    // app.use(cors(corsOptions))
+    const corsOptions = {
+        origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000'],
+        credentials: true
+    }
+    app.use(bodyParser.json())
+    app.use(cors(corsOptions))
 }
 
-app.post('/subscribe', (req, res) => {
+app.post('/subscribe/:myParams?', (req, res) => {
     const subsciption = req.body
-    res.status(201).json({title: 'Push Test'})
-    const payload = JSON.stringify({ title: 'Push Test' })
+    const {title, body} = req.query
+    res.status(201).json({})
+    console.log(req.query)
+    console.log(req.params)
+    const payload = JSON.stringify({ title, body })
     webpush.sendNotification(subsciption, payload).catch(err => console.error(err))
 })
     // Make every server-side-route to match the index.html
